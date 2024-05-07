@@ -78,7 +78,6 @@ public class EncryptionProgram
             encryptor.BlockSize = 128;
 
             var keyGenerator = new Rfc2898DeriveBytes(key, salt, 1000);
-
             encryptor.Key = keyGenerator.GetBytes(encryptor.KeySize / 8);
             encryptor.IV = keyGenerator.GetBytes(encryptor.BlockSize / 8);
 

